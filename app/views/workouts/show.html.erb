@@ -9,5 +9,15 @@
   <% end %>
 </ol>
 
+<ul>
+  <% @workout.comments.each do |comment| %>
+    <li><%= comment.content %>
+    <%= link_to "Edit", edit_workout_comment_path(@workout, comment) %>
+    <%= link_to "Delete", workout_destroy_comment_path(@workout, comment), method: :delete %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Add a Comment", new_workout_comment_path(@workout) %><br>
 <%= link_to "Add Exercise", exercises_path %><br>
 <%= link_to "Back to all workouts", workouts_path %>
