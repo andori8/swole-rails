@@ -21,4 +21,3 @@ class ExerciseWorkoutsController < ApplicationController
     @workout = current_user.workouts.find(params[:exercise_workout][:workout_id])
   end
 end
-end

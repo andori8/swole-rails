@@ -15,7 +15,6 @@ class ExercisesController < ApplicationController
   def create
     @exercise = Exercise.new(exercise_params)
     @exercise.user_id = current_user.id
-    binding.pry
     if @exercise.save
       redirect_to @exercise
     else
