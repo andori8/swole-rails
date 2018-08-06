@@ -3,5 +3,12 @@
 <%= @exercise.reps %><br>
 <%= @exercise.description %><br>
 
+<%= form_tag(exercise_workouts_path) do %>
+  <%= hidden_field_tag :exercise_id, @exercise.id %>
+  <%= collection_select(:exercise_workout, :workout_id, Workout.all, :id, :title) %><br><br>
+  <%= submit_tag "Add to Workout" %>
+<% end %>
+
 <%= link_to "Edit Exercise", edit_exercise_path(@exercise) %><br>
+<%= link_to "Delete Exercise", exercise_workout_path(@exercise), method: :delete %><br>
 <%= link_to "Back to Exercises", exercises_path %>
