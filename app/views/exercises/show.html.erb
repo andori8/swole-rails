@@ -10,5 +10,5 @@
 <% end %>
 
 <%= link_to "Edit Exercise", edit_exercise_path(@exercise) %><br>
-<%= link_to "Delete Exercise", exercise_workout_path(@exercise), method: :delete %><br>
+<%= link_to "Delete Exercise", "/exercises/#{@exercise.id}", method: :delete %><br>
 <%= link_to "Back to Exercises", exercises_path %>

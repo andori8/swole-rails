@@ -12,7 +12,7 @@ class ExerciseWorkoutsController < ApplicationController
 
   def destroy
     ExerciseWorkout.find_by(exercise_id: params[:id]).destroy
-    redirect_to exercises_path
+    redirect_to workouts_path
   end
 
   private

@@ -1,7 +1,11 @@
 class ExercisesController < ApplicationController
 
   def index
-    @exercises = Exercise.all
+    if params[:category_id]
+      @exercises = Exercise.all.specific_category(params[:category_id])
+    else
+      @exercises = Exercise.all
+    end
   end
 
   def new
@@ -33,6 +37,11 @@ class ExercisesController < ApplicationController
     else
       redirect_to exercises_path
     end
+  end
+
+  def destroy
+    Exercise.find(params[:id]).destroy
+    redirect_to exercises_path
   end
 
   private

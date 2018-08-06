@@ -4,7 +4,7 @@
 
 <ol>
   <% @workout.exercises.each do |exercise| %>
-     <li><%= link_to exercise.name, exercise %><br>
+     <li><%= link_to exercise.name, exercise %>   <%= link_to "Remove", exercise_workout_path(exercise), method: :delete %> <br>
      <%= exercise.sets %> sets, <%= exercise.reps %> reps</li>
   <% end %>
 </ol>
