@@ -2,5 +2,12 @@
 <h1><%= @workout.time %></h1>
 <h1><%= @workout.difficulty %></h1>
 
+<ol>
+  <% @workout.exercises.each do |exercise| %>
+     <li><%= link_to exercise.name, exercise %><br>
+     <%= exercise.sets %> sets, <%= exercise.reps %> reps</li>
+  <% end %>
+</ol>
 
+<%= link_to "Add Exercise", exercises_path %><br>
 <%= link_to "Back to all workouts", workouts_path %>
