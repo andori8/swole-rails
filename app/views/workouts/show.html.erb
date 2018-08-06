@@ -2,22 +2,5 @@
 <h1><%= @workout.time %></h1>
 <h1><%= @workout.difficulty %></h1>
 
-<ol>
-  <% @workout.exercises.each do |exercise| %>
-     <li><%= link_to exercise.name, exercise %><br>
-     <%= exercise.sets %> sets, <%= exercise.reps %> reps</li>
-  <% end %>
-</ol>
 
-<ul>
-  <% @workout.comments.each do |comment| %>
-    <li><%= comment.content %>
-    <%= link_to "Edit", edit_workout_comment_path(@workout, comment) %>
-    <%= link_to "Delete", workout_destroy_comment_path(@workout, comment), method: :delete %>
-    </li>
-  <% end %>
-</ul>
-
-<%= link_to "Add a Comment", new_workout_comment_path(@workout) %><br>
-<%= link_to "Add Exercise", exercises_path %><br>
 <%= link_to "Back to all workouts", workouts_path %>

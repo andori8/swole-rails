@@ -1,0 +1,9 @@
+<%= form_for @workout do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %><br><br>
+  <%= f.label :time %>
+  <%= f.text_field :time %><br><br>
+  <%= f.label :difficulty %>
+  <%= f.text_field :difficulty %><br><br>
+  <%= f.submit "Edit" %>
+<% end %>
