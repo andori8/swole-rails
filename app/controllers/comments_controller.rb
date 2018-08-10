@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to workout_path(@workout)
     else
-      redirect_to workout_path(@workout)
+      render :new
     end
   end
 
@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
     if @comment.update(comment_params)
       redirect_to workout_path(@workout)
     else
-      redirect_to workout_path(@workout)
+      render :edit
     end
   end
 
