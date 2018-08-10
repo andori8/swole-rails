@@ -1,5 +1,5 @@
-<% flash.each do |k, v| %>
-      <div id="<%= k %>"><%= v %></div>
+<% if flash[:alert] %>
+      <%= flash[:alert] %>
     <% end %>
     
 <h1><%= @workout.title %></h1>
