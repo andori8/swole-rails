@@ -11,9 +11,9 @@ class WorkoutsController < ApplicationController
     @workout = Workout.new(workout_params)
     @workout.user_id = current_user.id
     if @workout.save
-      redirect_to @workout
+      redirect_to @workout, alert: "Workout successfully created!" 
     else
-      redirect_to workouts_path
+      render :new
     end
   end
 
@@ -21,6 +21,11 @@ class WorkoutsController < ApplicationController
     @workout = Workout.find(params[:id])
   end
 
+  def destroy
+    Workout.find(params[:id]).destroy
+    redirect_to workouts_path
+  end
+  
   private
 
   def workout_params

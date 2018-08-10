@@ -1,3 +1,7 @@
+<% flash.each do |k, v| %>
+      <div id="<%= k %>"><%= v %></div>
+    <% end %>
+    
 <h1><%= @workout.title %></h1>
 <h1><%= @workout.time %></h1>
 <h1><%= @workout.difficulty %></h1>
@@ -20,4 +24,5 @@
 
 <%= link_to "Add a Comment", new_workout_comment_path(@workout) %><br>
 <%= link_to "Add Exercise", exercises_path %><br>
+<%= link_to "Remove", workout_path(@workout), method: :delete %>
 <%= link_to "Back to all workouts", workouts_path %>
