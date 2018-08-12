@@ -1,28 +1,6 @@
-<% if @exercise.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(@exercise.errors.count, "error") %>
-      prohibited this article from being saved:
-    </h2>
-
-    <ul>
-    <% @exercise.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render partial: 'application/errors', locals: {object: @exercise} %>
 
 <%= form_for @exercise do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br><br>
-  <%= f.label :sets %>
-  <%= f.number_field :sets %><br><br>
-  <%= f.label :reps %>
-  <%= f.number_field :reps %><br><br>
-  <%= f.label :description %>
-  <%= f.text_area :description %><br><br>
-  <%= f.label :category %>
-  <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
+  <%= render partial: 'form', locals: {f: f} %>
   <%= f.submit "Create" %>
 <% end %>

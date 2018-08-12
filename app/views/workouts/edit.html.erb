@@ -1,24 +1,6 @@
-<% if @workout.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(@workout.errors.count, "error") %>
-      prohibited this article from being saved:
-    </h2>
-
-    <ul>
-    <% @workout.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render partial: 'application/errors', locals: {object: @workout} %>
 
 <%= form_for @workout do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %><br><br>
-  <%= f.label :time %>
-  <%= f.text_field :time %><br><br>
-  <%= f.label :difficulty %>
-  <%= f.text_field :difficulty %><br><br>
+  <%= render partial: 'form', locals: {f: f} %>
   <%= f.submit "Edit" %>
 <% end %>
