@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:index] do
     resources :exercises, only: [:index, :show]
   end
+  get '/workouts/home', to: 'workouts#home', as: 'my_workouts'
   resources :exercises
   resources :workouts do
     resources :comments, only: [:new, :create, :edit, :update]
