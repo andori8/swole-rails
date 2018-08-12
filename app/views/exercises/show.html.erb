@@ -1,6 +1,4 @@
-<% if flash[:alert] %>
-      <%= flash[:alert] %>
-    <% end %>
+<%= render partial: 'application/alerts' %>
 
 <%= @exercise.name %><br>
 <%= @exercise.sets %><br>

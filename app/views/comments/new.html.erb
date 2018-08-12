@@ -1,7 +1,7 @@
 <%= render partial: 'application/errors', locals: {object: @comment} %>
 
 <%= form_for [@workout, @comment] do |f| %>
-<%= render partial: 'form', partial: {f: f} %>
+<%= render partial: 'form', locals: {f: f} %>
 <%= f.submit "Submit" %>
 <% end %>
   

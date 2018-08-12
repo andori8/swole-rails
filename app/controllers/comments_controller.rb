@@ -1,12 +1,13 @@
 class CommentsController < ApplicationController
+  before_action :set_workout
+  before_action :set_comment, only: [:edit, :update, :destroy]
+  
   def new
     @comment = Comment.new
-    @workout = Workout.find(params[:workout_id])
   end
 
   def create
     @comment = Comment.new(comment_params)
-    @workout = Workout.find(params[:workout_id])
     @comment.workout_id = @workout.id
     @comment.user_id = current_user.id
     if @comment.save
@@ -17,13 +18,9 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment = Comment.find(params[:id])
-    @workout = Workout.find(params[:workout_id])
   end
 
   def update
-    @comment = Comment.find(params[:id])
-    @workout = Workout.find(params[:workout_id])
     if @comment.update(comment_params)
       redirect_to workout_path(@workout), alert: "Comment updated."
     else
@@ -32,12 +29,19 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    Comment.find(params[:id]).destroy
-    @workout = Workout.find(params[:workout_id])
+    @comment.destroy
     redirect_to workout_path(@workout)
   end
 
   private
+  
+  def set_workout
+    @workout = Workout.find(params[:workout_id])
+  end
+  
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
 
   def comment_params
     params.require(:comment).permit(:content)

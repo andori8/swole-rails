@@ -1,6 +1,4 @@
-<% if flash[:alert] %>
-      <%= flash[:alert] %>
-    <% end %>
+<%= render partial: 'application/alerts' %>
     
 <h1><%= @workout.title %></h1>
 <h1><%= @workout.time %></h1>
@@ -8,8 +6,12 @@
 
 <ol>
   <% @workout.exercises.each do |exercise| %>
-     <li><%= link_to exercise.name, exercise %>   <%= link_to "Remove", exercise_workout_path(exercise), method: :delete %> <br>
-     <%= exercise.sets %> sets, <%= exercise.reps %> reps</li>
+     <li><%= link_to exercise.name, exercise %><br>
+     <%= exercise.sets %> sets, <%= exercise.reps %> reps<br>
+     <%= form_tag(exercise_workout_path(exercise), method: :delete) do %>
+     <%= hidden_field_tag :workout_id, @workout.id %>
+     <%= submit_tag "Delete" %>
+     <% end %></li>
   <% end %>
 </ol>
 
