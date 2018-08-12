@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     @comment.workout_id = @workout.id
     @comment.user_id = current_user.id
     if @comment.save
-      redirect_to workout_path(@workout)
+      redirect_to workout_path(@workout), alert: "Comment saved."
     else
       render :new
     end
@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @workout = Workout.find(params[:workout_id])
     if @comment.update(comment_params)
-      redirect_to workout_path(@workout)
+      redirect_to workout_path(@workout), alert: "Comment updated."
     else
       render :edit
     end

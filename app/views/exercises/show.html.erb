@@ -1,3 +1,7 @@
+<% if flash[:alert] %>
+      <%= flash[:alert] %>
+    <% end %>
+
 <%= @exercise.name %><br>
 <%= @exercise.sets %><br>
 <%= @exercise.reps %><br>

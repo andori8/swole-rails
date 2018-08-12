@@ -20,9 +20,9 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.new(exercise_params)
     @exercise.user_id = current_user.id
     if @exercise.save
-      redirect_to @exercise
+      redirect_to @exercise, alert: "Exercise created."
     else
-      redirect_to exercises_path
+      render :new
     end
   end
 
@@ -33,9 +33,9 @@ class ExercisesController < ApplicationController
   def update
     @exercise = Exercise.find(params[:id])
     if @exercise.update(exercise_params)
-      redirect_to exercises_path
+      redirect_to @exercise, alert: "Exercise updated."
     else
-      redirect_to exercises_path
+      render :edit
     end
   end
 
