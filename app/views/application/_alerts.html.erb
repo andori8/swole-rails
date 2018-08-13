@@ -1,5 +1,11 @@
 <% if flash[:alert] %>
-<div class="alert success">
-  <strong><%= flash[:alert] %></strong> 
-</div>
+  <% if flash[:alert].include?("deleted") %>
+    <div class="alert">
+      <strong><%= flash[:alert] %></strong>
+    </div>
+  <% else %>
+    <div class="alert success">
+      <strong><%= flash[:alert] %></strong>
+    </div>
+  <% end %>
 <% end %>

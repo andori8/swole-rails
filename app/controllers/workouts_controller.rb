@@ -1,10 +1,10 @@
 class WorkoutsController < ApplicationController
   before_action :set_workout, only: [:edit, :update, :show, :destroy]
-  
+
   def index
     @workouts = Workout.all
   end
-  
+
   def home
     @workouts = current_user.workouts
   end
@@ -17,18 +17,18 @@ class WorkoutsController < ApplicationController
     @workout = Workout.new(workout_params)
     @workout.user_id = current_user.id
     if @workout.save
-      redirect_to @workout, alert: "Workout successfully created!" 
+      redirect_to @workout, alert: "Workout created."
     else
       render :new
     end
   end
-  
+
   def edit
   end
-  
+
   def update
     if @workout.update(workout_params)
-      redirect_to @workout, alert: "Workout successfully updated!" 
+      redirect_to @workout, alert: "Workout updated."
     else
       render :edit
     end
@@ -39,11 +39,11 @@ class WorkoutsController < ApplicationController
 
   def destroy
     @workout.destroy
-    redirect_to workouts_path, alert: "Workout deleted!"
+    redirect_to workouts_path, alert: "Workout deleted."
   end
-  
+
   private
-  
+
   def set_workout
     @workout = Workout.find(params[:id])
   end

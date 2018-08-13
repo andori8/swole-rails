@@ -39,11 +39,11 @@ class ExercisesController < ApplicationController
 
   def destroy
     @exercise.destroy
-    redirect_to exercises_path
+    redirect_to exercises_path, alert: "Exercise deleted."
   end
 
   private
-  
+
   def set_exercise
     @exercise = Exercise.find(params[:id])
   end
