@@ -6,5 +6,4 @@ class Workout < ApplicationRecord
 
   validates :title, presence: true
   validates :time, presence: true
-  validates :difficulty, presence: true
 end
