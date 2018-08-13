@@ -21,16 +21,24 @@ class CommentsController < ApplicationController
   end
 
   def update
-    if @comment.update(comment_params)
-      redirect_to workout_path(@workout), alert: "Comment updated."
+    if current_user.id == @comment.user_id
+      if @comment.update(comment_params)
+        redirect_to workout_path(@workout), alert: "Comment updated."
+      else
+        render :edit
+      end
     else
-      render :edit
+      redirect_to workout_path(@workout), alert: "Can't do that."
     end
   end
 
   def destroy
-    @comment.destroy
-    redirect_to workout_path(@workout), alert: "Comment deleted."
+    if current_user.id == @comment.user_id
+      @comment.destroy
+      redirect_to workout_path(@workout), alert: "Comment deleted."
+    else
+      redirect_to workout_path(@workout), alert: "Can't do that."
+    end
   end
 
   private

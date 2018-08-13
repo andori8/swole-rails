@@ -27,10 +27,14 @@ class WorkoutsController < ApplicationController
   end
 
   def update
-    if @workout.update(workout_params)
-      redirect_to @workout, alert: "Workout updated."
+    if current_user.id == @workout.user_id
+      if @workout.update(workout_params)
+        redirect_to @workout, alert: "Workout updated."
+      else
+        render :edit
+      end
     else
-      render :edit
+      redirect_to @workout, alert: "Can't do that."
     end
   end
 
@@ -38,8 +42,12 @@ class WorkoutsController < ApplicationController
   end
 
   def destroy
-    @workout.destroy
-    redirect_to workouts_path, alert: "Workout deleted."
+    if current_user.id == @workout.user_id
+      @workout.destroy
+      redirect_to workouts_path, alert: "Workout deleted."
+    else
+      redirect_to workout_path(@workout), alert: "Can't do that."
+    end
   end
 
   private

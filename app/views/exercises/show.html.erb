@@ -1,16 +1,20 @@
 <%= render partial: 'application/alerts' %>
 
-<%= @exercise.name %><br>
-<%= @exercise.sets %><br>
-<%= @exercise.reps %><br>
-<%= @exercise.description %><br>
+<br>
+<h1><%= @exercise.name %></h1>
+<h3>Sets: <%= @exercise.sets %></h3><br>
+<h3>Reps: <%= @exercise.reps %></h3><br><br>
+<h3>Description:</h3><br>
+<p><%= @exercise.description %></p><br>
 
 <%= form_tag(exercise_workouts_path) do %>
   <%= hidden_field_tag :exercise_id, @exercise.id %>
-  <%= collection_select(:exercise_workout, :workout_id, Workout.all, :id, :title) %><br><br>
+  <%= collection_select(:exercise_workout, :workout_id, current_user.workouts.all, :id, :title) %><br><br>
   <%= submit_tag "Add to Workout" %>
 <% end %>
 
-<%= link_to "Edit Exercise", edit_exercise_path(@exercise) %><br>
-<%= link_to "Delete Exercise", "/exercises/#{@exercise.id}", method: :delete %><br>
+<% if current_user.id = @exercise.user_id %>
+  <%= link_to "Edit Exercise", edit_exercise_path(@exercise) %><br>
+  <%= link_to "Delete Exercise", "/exercises/#{@exercise.id}", method: :delete %><br>
+<% end %>
 <%= link_to "Back to Exercises", exercises_path %>

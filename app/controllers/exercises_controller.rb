@@ -30,16 +30,24 @@ class ExercisesController < ApplicationController
   end
 
   def update
-    if @exercise.update(exercise_params)
-      redirect_to @exercise, alert: "Exercise updated."
+    if current_user.id == @exercise.user_id
+      if @exercise.update(exercise_params)
+        redirect_to @exercise, alert: "Exercise updated."
+      else
+        render :edit
+      end
     else
-      render :edit
+      redirect_to @exercise, alert: "Can't do that."
     end
   end
 
   def destroy
-    @exercise.destroy
-    redirect_to exercises_path, alert: "Exercise deleted."
+    if current_user.id == @exercise.user_id
+      @exercise.destroy
+      redirect_to exercises_path, alert: "Exercise deleted."
+    else
+      redirect_to @exercise, alert: "Can't do that."
+    end
   end
 
   private
