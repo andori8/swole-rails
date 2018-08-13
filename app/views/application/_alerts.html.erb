@@ -1,5 +1,5 @@
 <% if flash[:alert] %>
-  <% if flash[:alert].include?("deleted") %>
+  <% if flash[:alert].include?("deleted") || flash[:alert].include?("Can't") %>
     <div class="alert">
       <strong><%= flash[:alert] %></strong>
     </div>

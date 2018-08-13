@@ -53,3 +53,19 @@
 }
 
 .alert.success {background-color: #4CAF50;}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h2, h3 {
+  width: 50%;
+  height: 60px;
+  margin: 0;
+  padding: 0;
+  display: inline;
+}

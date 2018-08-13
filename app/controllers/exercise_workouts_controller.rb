@@ -4,16 +4,20 @@ class ExerciseWorkoutsController < ApplicationController
   def create
     exercise_workout = @workout.exercise_workouts.build(exercise_id: params[:exercise_id])
     if exercise_workout.save
-      redirect_to workout_path(@workout), alert: "Exercise added to workout."
+      redirect_to workout_path(@workout), alert: "Exercise added."
     else
       redirect_to workout_path(@workout)
     end
   end
 
   def destroy
-    @workout = current_user.workouts.find(params[:workout_id])
-    ExerciseWorkout.find_by(exercise_id: params[:id]).destroy
-    redirect_to workout_path(@workout)
+    @workout = Workout.find(params[:workout_id])
+    if current_user.id == @workout.user_id
+      ExerciseWorkout.find_by(exercise_id: params[:id]).destroy
+      redirect_to workout_path(@workout), alert: "Exercise deleted."
+    else
+      redirect_to workout_path(@workout), alert: "Can't do that."
+    end
   end
 
   private

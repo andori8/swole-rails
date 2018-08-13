@@ -1,8 +1,12 @@
 <%= render partial: 'application/alerts' %>
-    
-<h1><%= @workout.title %></h1>
-<h1><%= @workout.time %></h1>
-<h1><%= @workout.difficulty %></h1>
+
+<br>
+<h3>Title:&nbsp;</h3>
+<h2><em><%= @workout.title %></em></h2><br>
+<h3>Estimated Time:&nbsp;</h3>
+<h2><em><%= @workout.time %></em></h2><br>
+<h3>Difficulty:&nbsp;</h3>
+<h2><em><%= @workout.difficulty %></em></h2>
 
 <ol>
   <% @workout.exercises.each do |exercise| %>
@@ -26,6 +30,6 @@
 
 <%= link_to "Add a Comment", new_workout_comment_path(@workout) %><br>
 <%= link_to "Add Exercise", exercises_path %><br>
-<%= link_to "Edit Workout", edit_workout_path(@workout) %><br> 
+<%= link_to "Edit Workout", edit_workout_path(@workout) %><br>
 <%= link_to "Remove Workout", workout_path(@workout), method: :delete %><br>
 <%= link_to "Back to all workouts", workouts_path %>
