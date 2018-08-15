@@ -1,9 +1,8 @@
 <h1>All Exercises</h1>
-  <ol>
+  <ul>
     <% @exercises.each do |exercise| %>
-      <li><%= link_to exercise.name, exercise %></li>
+      <li><%= link_to exercise.name, exercise %> - <%=exercise.user.username%></li>
     <% end %>
-  </ol>
+  </ul>
 
-<%= link_to "Create Exercise", new_exercise_path %><br>
-<%= link_to "Back to workouts", workouts_path %>
+<%= link_to "Create Exercise", new_exercise_path %>
