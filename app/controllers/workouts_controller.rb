@@ -1,5 +1,6 @@
 class WorkoutsController < ApplicationController
   before_action :set_workout, only: [:edit, :update, :show, :destroy]
+  include WorkoutsHelper
 
   def index
     @workouts = Workout.all
@@ -27,7 +28,7 @@ class WorkoutsController < ApplicationController
   end
 
   def update
-    if current_user.id == @workout.user_id
+    if check_user(@workout)
       if @workout.update(workout_params)
         redirect_to @workout, alert: "Workout updated."
       else
@@ -42,7 +43,7 @@ class WorkoutsController < ApplicationController
   end
 
   def destroy
-    if current_user.id == @workout.user_id
+    if check_user(@workout)
       @workout.destroy
       redirect_to workouts_path, alert: "Workout deleted."
     else
