@@ -28,7 +28,7 @@ class WorkoutsController < ApplicationController
   end
 
   def update
-    if check_user(@workout)
+    if current_user.id == @workout.user_id
       if @workout.update(workout_params)
         redirect_to @workout, alert: "Workout updated."
       else
@@ -43,7 +43,7 @@ class WorkoutsController < ApplicationController
   end
 
   def destroy
-    if check_user(@workout)
+    if current_user.id == @workout.user_id
       @workout.destroy
       redirect_to workouts_path, alert: "Workout deleted."
     else
