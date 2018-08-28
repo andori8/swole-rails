@@ -2,8 +2,8 @@ class User < ApplicationRecord
   has_many :workouts
   has_many :exercises
   has_many :comments
-  validates :name, presence: true
-  validates :username, presence: true
+  validates :name, presence: true, unless: -> { from_omniauth? }
+  validates :username, presence: true, unless: -> { from_omniauth? }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -16,4 +16,10 @@ class User < ApplicationRecord
            user.password = Devise.friendly_token[0,20]
          end
       end
+
+      private
+
+def from_omniauth?
+  provider && uid
+end
 end
