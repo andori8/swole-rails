@@ -1,6 +1,5 @@
 class WorkoutsController < ApplicationController
   before_action :set_workout, only: [:edit, :update, :show, :destroy]
-  include WorkoutsHelper
 
   def index
     @workouts = Workout.all
