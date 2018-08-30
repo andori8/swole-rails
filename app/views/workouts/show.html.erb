@@ -19,7 +19,7 @@
 
 <ul>
   <% @workout.comments.each do |comment| %>
-    <li><%= comment.content %>
+    <li><%= comment.content %> - <%= comment.user.username %>
     <%= link_to "Edit", edit_workout_comment_path(@workout, comment) %>
     <%= link_to "Delete", workout_destroy_comment_path(@workout, comment), method: :delete %>
     </li>
