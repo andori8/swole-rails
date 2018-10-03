@@ -13,6 +13,10 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.new
   end
 
+  def ten
+    @hard_exercises = Exercise.ten_reps_or_more
+  end
+
   def show
   end
 

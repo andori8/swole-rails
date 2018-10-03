@@ -10,4 +10,5 @@ class Exercise < ApplicationRecord
   validates :category_id, presence: true
 
   scope :specific_category, ->(category_id) { where("category_id = ?", category_id) }
+  scope :ten_reps_or_more, -> { where("reps >= ?", 10) }
 end

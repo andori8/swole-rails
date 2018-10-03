@@ -1,8 +1,10 @@
 <h1>All Exercises</h1>
   <ul>
     <% @exercises.each do |exercise| %>
-      <li><%= link_to exercise.name, exercise %> - <%=exercise.user.username%></li>
+        <li><%= link_to exercise.name, exercise %> - <%=exercise.user.username%></li>
     <% end %>
   </ul>
 
-<%= link_to "Create Exercise", new_exercise_path %>
+<%= link_to "Create Exercise", new_exercise_path %><br>
+
+<%= link_to "Exercises with ten reps or more", ten_exercises_path %>

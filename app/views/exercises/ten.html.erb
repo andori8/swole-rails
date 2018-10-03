@@ -1,0 +1,7 @@
+<h2> Exercises with 10 or More Reps</h2>
+
+<% @hard_exercises.each do |exercise| %>
+  <ul>
+    <li><%= link_to exercise.name, exercise %> - <%=exercise.user.username%></li>
+  </ul>
+<% end %>
