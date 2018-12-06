@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:new, :create, :edit, :update]
     resources :comments, only: [:destroy], as: "destroy_comment"
   end
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations" }
   root 'welcome#index'
   resources :exercise_workouts, only: [:create, :destroy]
 end

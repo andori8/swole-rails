@@ -14,7 +14,7 @@
 <ul>
   <li><a href= "/workouts/home">Home</a></li>
   <li><a href="/workouts">Workouts</a></li>
-  <li><a href="/exercises">Exercises</a></li>
+  <li><a href="/exercises" class="all_exercises">Exercises</a></li>
   <li><a href="/categories">Categories</a></li>
   <% if user_signed_in? %>
   <li style="float:right"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
