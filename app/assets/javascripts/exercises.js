@@ -7,4 +7,4 @@ const bindClick = () => {
 		e.preventDefault()
 		console.log("Hello")
 	})
-}
+}hi
