@@ -7,12 +7,13 @@ const workoutsIndex = () => {
     e.preventDefault()
     history.pushState(null, null, "workouts")
     $.get('/workouts.json').success(json => {
-      $('#app').html('')
+      $('#app').html("<h1>All Workouts</h1>")
       json.forEach(workout => {
         let newWorkout = new Workout(workout)
         let workoutHtml = newWorkout.formatIndex()
         $("#app").append(workoutHtml)
       })
+      $("#app").append(`<a href="/workouts/new">Create a New Workout</a>`)
     })
   })
 }
@@ -26,8 +27,9 @@ function Workout(workout) {
 
 Workout.prototype.formatIndex = function() {
   let workoutHtml = `
-    <h1>${this.title}</h1>
+    <ul>
+      <a href="/workouts/${this.id}"><li>${this.title}</li></a>
+    </ul>
   `
-
   return workoutHtml
 }
