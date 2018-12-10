@@ -3,6 +3,10 @@ class WorkoutsController < ApplicationController
 
   def index
     @workouts = Workout.all
+    respond_to do |f|
+      f.html
+      f.json {render json:@workouts}
+    end
   end
 
   def home

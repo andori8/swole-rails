@@ -15,4 +15,4 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree .
-//= require exercises
+//= require workouts
