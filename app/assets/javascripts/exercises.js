@@ -13,7 +13,8 @@ const exercisesIndex = () => {
         let exerciseHtml = newExercise.formatIndex()
         $("#app").append(exerciseHtml)
       })
-      $("#app").append(`<a href="/exercises/new">Create a New Exercise</a>`)
+      $("#app").append(`<a href="/exercises/new">Create a New Exercise</a><br>
+                        <a href="/exercises/ten">Exercises with ten reps or more</a>`)
     })
   })
 }
