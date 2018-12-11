@@ -2,11 +2,6 @@ class CommentsController < ApplicationController
   before_action :set_workout
   before_action :set_comment, only: [:edit, :update, :destroy]
 
-  def index
-    @comments = @workout.comments
-    render layout: false
-  end
-
   def new
     @comment = Comment.new
   end

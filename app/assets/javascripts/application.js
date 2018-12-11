@@ -16,5 +16,6 @@
 //= require bootstrap-sprockets
 //= require_tree .
 //= require categories
+//= require comments
 //= require exercises
 //= require workouts
