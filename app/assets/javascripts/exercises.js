@@ -4,8 +4,8 @@ $(() => {
 
 const exercisesIndex = () => {
   $(".all_exercises").on("click", (e) => {
-    e.preventDefault()
     history.pushState(null, null, "exercises")
+    e.preventDefault()
     $.get('/exercises.json').success(json => {
       $('#app').html("<h1>All Exercises</h1>")
       json.forEach(exercise => {
@@ -18,9 +18,14 @@ const exercisesIndex = () => {
     })
   })
 
-  $(document).on("click", ".next_exercise", function() {
-    let id = window.location.pathname.replace(/[^\d.]/g,'')
-    fetch(`/exercises/${id}/next`)
+  $(".next_exercise").on("click", function(e) {
+    console.log(this)
+    $.get(`/exercises/${id}/next`).success(exercise => {
+      $(".exercise_show").empty()
+      let nextExercise = new Exercise(exercise)
+      let exerciseHtml = nextExercise.formatShow()
+      $(".exercise_show").append(exerciseHtml)
+    })
   })
 }
 
@@ -37,8 +42,19 @@ function Exercise(exercise) {
 Exercise.prototype.formatIndex = function() {
   let exerciseHtml = `
     <ul>
-      <li><a href="/exercises/${this.id}">${this.name}</a> - ${this.user.username}</li>
+      <li><a href="/exercises/${this.id}" data-id="${this.id}">${this.name}</a> - ${this.user.username}</li>
     </ul>
+  `
+  return exerciseHtml
+}
+
+Exercise.prototype.formatShow = function() {
+  let exerciseHtml = `
+    <h1>${this.name}</h1>
+    <h3>Sets: ${this.sets}</h3><br>
+    <h3>Reps: ${this.reps}</h3><br><br>
+    <h3>Description:</h3><br>
+    <p>${this.description}</p><br>
   `
   return exerciseHtml
 }

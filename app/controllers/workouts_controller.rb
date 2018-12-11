@@ -11,10 +11,6 @@ class WorkoutsController < ApplicationController
 
   def home
     @workouts = current_user.workouts
-    respond_to do |f|
-      f.html
-      f.json {render json:@workouts}
-    end
   end
 
   def new

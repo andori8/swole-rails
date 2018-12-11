@@ -15,6 +15,6 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree .
+//= require categories
 //= require exercises
-//= require home
 //= require workouts

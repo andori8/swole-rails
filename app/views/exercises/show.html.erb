@@ -1,11 +1,12 @@
 <%= render partial: 'application/alerts' %>
 
-<br>
+<div class="exercise_show">
 <h1><%= @exercise.name %></h1>
 <h3>Sets: <%= @exercise.sets %></h3><br>
 <h3>Reps: <%= @exercise.reps %></h3><br><br>
 <h3>Description:</h3><br>
 <p><%= @exercise.description %></p><br>
+</div>
 
 <%= form_tag(exercise_workouts_path) do %>
   <%= hidden_field_tag :exercise_id, @exercise.id %>
