@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations" }
   root 'welcome#index'
   resources :exercise_workouts, only: [:create, :destroy]
+  get '/exercises/:id/next', to: 'exercises#next'
 end

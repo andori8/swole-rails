@@ -1,5 +1,5 @@
 class ExercisesController < ApplicationController
-  before_action :set_exercise, only: [:show, :edit, :update, :destroy]
+  before_action :set_exercise, only: [:show, :edit, :update, :destroy, :next]
 
   def index
     if params[:category_id]
@@ -12,6 +12,11 @@ class ExercisesController < ApplicationController
       f.html
       f.json {render json: @exercises}
     end
+  end
+
+  def next
+    @next_exercise = @exercise.next
+    render json: @next_exercise
   end
 
   def new

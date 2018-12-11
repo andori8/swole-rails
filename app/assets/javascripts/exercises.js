@@ -17,6 +17,11 @@ const exercisesIndex = () => {
                         <a href="/exercises/ten">Exercises with ten reps or more</a>`)
     })
   })
+
+  $(document).on("click", ".next_exercise", function() {
+    let id = window.location.pathname.replace(/[^\d.]/g,'')
+    fetch(`/exercises/${id}/next`)
+  })
 }
 
 function Exercise(exercise) {

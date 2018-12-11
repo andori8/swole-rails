@@ -11,4 +11,9 @@ class Exercise < ApplicationRecord
 
   scope :specific_category, ->(category_id) { where("category_id = ?", category_id) }
   scope :ten_reps_or_more, -> { where("reps >= ?", 10) }
+
+  def next
+    exercise = Exercise.where("id > ?", id).first
+    exercise ? exercise : Exercise.first
+  end
 end
