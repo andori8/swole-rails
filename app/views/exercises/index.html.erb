@@ -1,7 +1,7 @@
 <h1>All Exercises</h1>
   <ul>
     <% @exercises.each do |exercise| %>
-        <li><%= link_to exercise.name, exercise %> - <%=exercise.user.username%></li>
+        <li><%= link_to exercise.name, exercise %> - <%=exercise.user.username%></li><br>
     <% end %>
   </ul>
 
