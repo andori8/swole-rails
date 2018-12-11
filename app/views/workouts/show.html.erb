@@ -1,10 +1,12 @@
 <%= render partial: 'application/alerts' %>
 
+<div class="workout-show">
 <br>
 <h3>Title:&nbsp;</h3>
 <h2><em><%= @workout.title %></em></h2><br>
 <h3>Estimated Time:&nbsp;</h3>
 <h2><em><%= @workout.time %></em></h2><br>
+</div>
 
 <ol>
   <% @workout.exercises.each do |exercise| %>
@@ -33,3 +35,4 @@
 <% end %>
 <%= link_to "Add a Comment", new_workout_comment_path(@workout) %><br>
 <%= link_to "Back to all workouts", workouts_path %><br>
+<%= link_to "Load Comments", workout_comments_path(@workout), class: "load_comments" %>
