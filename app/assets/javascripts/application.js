@@ -16,4 +16,5 @@
 //= require bootstrap-sprockets
 //= require_tree .
 //= require exercises
+//= require home
 //= require workouts
