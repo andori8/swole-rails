@@ -19,7 +19,7 @@ const exercisesIndex = () => {
   })
 
   $(".next_exercise").on("click", function(e) {
-    console.log(this)
+    let id = $("#exercise_id").text()
     $.get(`/exercises/${id}/next`).success(exercise => {
       $(".exercise_show").empty()
       let nextExercise = new Exercise(exercise)
@@ -55,6 +55,7 @@ Exercise.prototype.formatShow = function() {
     <h3>Reps: ${this.reps}</h3><br><br>
     <h3>Description:</h3><br>
     <p>${this.description}</p><br>
+    <p id="exercise_id">${this.id}</p>
   `
   return exerciseHtml
 }
