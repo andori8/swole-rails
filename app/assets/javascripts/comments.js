@@ -4,11 +4,8 @@ $(() => {
 
 const loadComments = () => {
   $(".load_comments").on("click", function(e) {
-  	$.ajax({
-  		method: "GET",
-  		url: this.href
-  	}).success(data => {
-  		$("ul.comments").html(data)
+  	$.get(this.href).success(res => {
+  		$("ul.comments").html(res)
   	})
     e.preventDefault()
   })

@@ -27,6 +27,10 @@
   <%= link_to "Edit Workout", edit_workout_path(@workout) %><br>
   <%= link_to "Remove Workout", workout_path(@workout), method: :delete %><br><br>
 <% end %>
-<%= link_to "Add a Comment", new_workout_comment_path(@workout) %><br>
 <%= link_to "Back to all workouts", workouts_path %><br>
-<%= link_to "Load Comments", workout_comments_path(@workout), :class => "load_comments" %><br>
+<%= link_to "Load Comments", workout_comments_path(@workout), :class => "load_comments" %><br><br>
+
+<%= form_for [@workout, @comment] do |f| %>
+  <%= f.text_area :content %>
+  <p><%= f.submit %></p>
+<% end %>

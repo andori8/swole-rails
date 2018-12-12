@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/home', to: 'workouts#home', as: 'my_workouts'
   resources :exercises
   resources :workouts do
-    resources :comments, only: [:index, :new, :create, :edit, :update]
+    resources :comments, only: [:index, :create, :edit, :update]
     resources :comments, only: [:destroy], as: "destroy_comment"
   end
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations" }

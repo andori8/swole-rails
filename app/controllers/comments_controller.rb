@@ -7,10 +7,6 @@ class CommentsController < ApplicationController
     render :layout => false
   end
 
-  def new
-    @comment = Comment.new
-  end
-
   def create
     @comment = Comment.new(comment_params)
     @comment.workout_id = @workout.id
