@@ -14,18 +14,10 @@ const loadComments = () => {
 
 const newComment = () => {
 	$("#new_comment").on("submit", function(e) {
-    let url = this.action
-    let data = {
-      'authenticity_token': $("input[name='authenticity_token']").val(),
-      'comment': {
-        'content': $("#comment_content").val()
-      }
-    }
-
     $.ajax({
-      type: "POST",
-      url: url,
-      data: data,
+      type: ($("input[name='_method']").val() || this.method),
+      url: this.action,
+      data: $(this).serialize(),
       success: function(response) {
         $("#comment_content").val("")
         let $ul = $("ul.comments")
