@@ -19,13 +19,7 @@
   <% end %>
 </ol>
 
-<ul>
-  <% @workout.comments.each do |comment| %>
-    <li><%= comment.content %> - <%= comment.user.username %>
-    <%= link_to "Edit", edit_workout_comment_path(@workout, comment) %>
-    <%= link_to "Delete", workout_destroy_comment_path(@workout, comment), method: :delete %>
-    </li>
-  <% end %>
+<ul class="comments">
 </ul>
 
 <% if current_user.id == @workout.user_id %>
@@ -35,3 +29,4 @@
 <% end %>
 <%= link_to "Add a Comment", new_workout_comment_path(@workout) %><br>
 <%= link_to "Back to all workouts", workouts_path %><br>
+<%= link_to "Load Comments", workout_comments_path(@workout), :class => "load_comments" %><br>
