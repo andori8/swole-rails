@@ -1,5 +1,6 @@
 $(() => {
   loadComments()
+  newComment()
 })
 
 const loadComments = () => {
@@ -9,4 +10,10 @@ const loadComments = () => {
   	})
     e.preventDefault()
   })
+}
+
+const newComment = () => {
+	$("#new_comment").on("submit", function(e) {
+		e.preventDefault()
+	})
 }
