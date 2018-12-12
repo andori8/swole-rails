@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     @comment.workout_id = @workout.id
     @comment.user_id = current_user.id
     if @comment.save
-      redirect_to workout_path(@workout), alert: "Comment created."
+      render 'comments/show', layout: false
     else
       render :new
     end
@@ -36,7 +36,7 @@ class CommentsController < ApplicationController
   def destroy
     if current_user.id == @comment.user_id
       @comment.destroy
-      redirect_to workout_path(@workout), alert: "Comment deleted."
+      redirect_to workout_path(@workout)
     else
       redirect_to workout_path(@workout), alert: "Can't do that."
     end
