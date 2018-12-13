@@ -1,6 +1,6 @@
 # README
 
-CMS App built using Ruby on Rails. Swole's purpose is to allow users to create multiple workouts, create/add multiple exercises to their workouts, and browse the created workouts of other users.
+CMS App built using Ruby on Rails with Javascript frontend. Swole's purpose is to allow users to create multiple workouts, create/add multiple exercises to their workouts, and browse the created workouts of other users.
 
 ## Usage
 
