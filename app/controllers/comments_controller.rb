@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
 
   def index
     @comments = @workout.comments
-    render :layout => false
+    render :json => @comments
   end
 
   def create
