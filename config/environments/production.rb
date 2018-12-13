@@ -1,6 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
+  config.action_view.automatically_disable_submit_tag = false
   # Code is not reloaded between requests.
   config.cache_classes = true
 
