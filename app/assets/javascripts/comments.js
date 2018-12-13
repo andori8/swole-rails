@@ -20,7 +20,7 @@ const loadComments = () => {
 const newComment = () => {
 	$("#new_comment").on("submit", function(e) {
     $.ajax({
-      type: ($("input[name='_method']").val() || this.method),
+      type: "POST",
       url: this.action,
       data: $(this).serialize(),
       success: function(response) {
