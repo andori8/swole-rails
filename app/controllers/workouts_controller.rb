@@ -45,6 +45,10 @@ class WorkoutsController < ApplicationController
   def show
     @comments = @workout.comments
     @comment = Comment.new
+    respond_to do |f|
+      f.html
+      f.json {render json: @workout}
+    end
   end
 
   def destroy

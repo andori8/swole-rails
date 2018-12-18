@@ -5,9 +5,9 @@ $(() => {
 
 const loadComments = () => {
   $(".load_comments").on("click", function(e) {
-  	$.get(this.href).success(res => {
+  	$.get(this.href + '.json').success(res => {
   		$("ul.comments").html("")
-      res.forEach(comment => {
+      res.comments.forEach(comment => {
         let newComment = new Comment(comment)
         let commentHtml = newComment.formatComments()
         $("ul.comments").append(commentHtml)
